@@ -3,7 +3,6 @@
 , callPackage
 , fetchPypi
 , pythonOlder
-, argcomplete
 , ipython
 , jupyter-client
 , packaging
