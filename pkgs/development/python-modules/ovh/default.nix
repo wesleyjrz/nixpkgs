@@ -1,7 +1,10 @@
 { lib
 , buildPythonPackage
 , fetchPypi
+, mock
+, nose
 , requests
+, yanc
 }:
 
 buildPythonPackage rec {
@@ -18,8 +21,24 @@ buildPythonPackage rec {
     requests
   ];
 
-  # Needs yanc
-  doCheck = false;
+  preCheck = ''
+    export HOME=$(mktemp -d)
+  '';
+
+  checkInputs = [
+    mock
+    nose
+    yanc
+  ];
+
+  # requires network
+  checkPhase = ''
+    nosetests . \
+      -e test_config_get_conf \
+      -e test_config_get_custom_conf \
+      -e test_endpoints \
+      -e test_init_from_custom_config
+  '';
 
   meta = {
     description = "Thin wrapper around OVH's APIs";
