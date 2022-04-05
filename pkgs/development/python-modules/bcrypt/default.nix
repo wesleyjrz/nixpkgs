@@ -30,7 +30,7 @@ buildPythonPackage rec {
     cffi
   ];
 
-  propagatedNativeBuildInputs = lib.optional (!isPyPy) [
+  propagatedNativeBuildInputs = [
     cffi
   ];
 
