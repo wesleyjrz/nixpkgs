@@ -44,7 +44,7 @@ buildPythonPackage rec {
 
   disabledTests = [
     # https://github.com/Zac-HD/hypothesmith/issues/21
-    "test_source_code_from_libcst_node_type[MatchSingleton]"
+    "test_source_code_from_libcst_node_type"
   ];
 
   pythonImportsCheck = [ "hypothesmith" ];
